@@ -50,6 +50,10 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Dump docker logs on failure using different shell
       if: failure()
       uses: jwalton/gh-docker-logs@v1
+      with:
+        shell: '/bin/sh'
 
