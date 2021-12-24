@@ -43,10 +43,6 @@ jobs:
     - name: Rename the Dockerfile, if a Dockerfile.js exists.
       run: if [[ -r Dockerfile.js ]]; then mv Dockerfile.js Dockerfile; fi
 
-    - name: Dump docker logs on failure
-      if: failure()
-      uses: jwalton/gh-docker-logs@v1
-
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
@@ -54,3 +50,8 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Dump docker logs on failure
+      if: failure()
+      uses: jwalton/gh-docker-logs@v1
+
