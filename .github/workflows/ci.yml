@@ -41,7 +41,7 @@ jobs:
       run: ls -altriR
 
     - name: Rename the Dockerfile, if a Dockerfile.js exists.
-      run: [[ -r Dockerfile.js ]] && mv Dockerfile.js Dockerfile
+      run: if [[ -r Dockerfile.js ]]; then mv Dockerfile.js Dockerfile; fi
 
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
