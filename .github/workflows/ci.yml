@@ -40,8 +40,8 @@ jobs:
     - name: Check Directory Contents
       run: ls -altriR
 
-    - name: Rename the Dockerfile
-      run: mv Dockerfile.js Dockerfile
+    - name: Rename the Dockerfile, if a Dockerfile.js exists.
+      run: [[ -r Dockerfile.js ]] && mv Dockerfile.js Dockerfile
 
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
