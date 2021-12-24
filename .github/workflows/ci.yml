@@ -50,8 +50,6 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Dump docker logs on failure
       if: failure()
       uses: jwalton/gh-docker-logs@v1
 
