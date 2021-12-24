@@ -37,6 +37,9 @@ jobs:
       with:
         arguments: build
 
+    - name: Check Directory Contents
+      run: ls -altriR
+
     - name: Rename the Dockerfile
       run: mv Dockerfile.js Dockerfile
 
